@@ -30,18 +30,17 @@ namespace Input
 
         void Update()
         {
-            float horizontalMovement = UnityEngine.Input.GetAxis(HORIZONTAL_AXIS) * Time.deltaTime;
-            float verticalMovement = UnityEngine.Input.GetAxis(VERTICAL_AXIS) * Time.deltaTime;
+            float horizontalMovement = UnityEngine.Input.GetAxis(HORIZONTAL_AXIS) * Time.deltaTime * speed;
+            float verticalMovement = UnityEngine.Input.GetAxis(VERTICAL_AXIS) * Time.deltaTime * speed;
 
-            if (axes.HasFlag(RotationAxes.MouseX) && horizontalMovement != 0)
+            if (axes == RotationAxes.MouseX && horizontalMovement != 0)
             {
-                transform.localRotation *= Quaternion.AngleAxis(horizontalMovement * speed, Vector3.up);
+                transform.localRotation *= Quaternion.AngleAxis(horizontalMovement, Vector3.up);
             }
 
-            if (axes.HasFlag(RotationAxes.MouseY) && verticalMovement != 0)
+            if (axes == RotationAxes.MouseY && verticalMovement != 0)
             {
-                Debug.Log(verticalMovement);
-                transform.localRotation *= Quaternion.AngleAxis(verticalMovement * speed, Vector3.right);
+                transform.localRotation *= Quaternion.AngleAxis(verticalMovement, -Vector3.right);
             }
         }
 
