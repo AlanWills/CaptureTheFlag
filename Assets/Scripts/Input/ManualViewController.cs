@@ -10,7 +10,7 @@ namespace Input
     public enum RotationAxes 
     { 
         MouseX, 
-        MouseY
+        MouseY,
     }
 
     [AddComponentMenu("Input/Manual View Controller")]
@@ -30,6 +30,8 @@ namespace Input
 
         void Update()
         {
+            Cursor.lockState = CursorLockMode.Locked;
+
             float horizontalMovement = UnityEngine.Input.GetAxis(HORIZONTAL_AXIS) * Time.deltaTime * speed;
             float verticalMovement = UnityEngine.Input.GetAxis(VERTICAL_AXIS) * Time.deltaTime * speed;
 
