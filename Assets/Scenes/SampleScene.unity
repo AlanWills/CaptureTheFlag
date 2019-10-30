@@ -239,7 +239,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 744372841}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.57635355, y: -0.968, z: -4.57}
+  m_LocalPosition: {x: 0, y: 0.5, z: -0.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1967658830}
@@ -285,7 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 973949ccdf6ffb444b16e1d12cd24617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: Red
+  player: {fileID: 11400000, guid: 1e4f43e4e5a9a924a8083c7935c797ba, type: 2}
 --- !u!136 &744372846
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 792682957}
   - component: {fileID: 792682958}
   m_Layer: 0
-  m_Name: RedFlag
+  m_Name: BlueFlag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -388,8 +388,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792682952}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 4}
+  m_LocalScale: {x: 0.05, y: 0.5, z: 0.05}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -403,10 +403,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 792682952}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e54239ce82b21804a97fae85e88193e2, type: 3}
+  m_Script: {fileID: 11500000, guid: f5d2eb856b4dff241b8e86af04660ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: Blue
+  flag: {fileID: 11400000, guid: 79dd4c83a9087c44d8c053bd08dd3c87, type: 2}
 --- !u!54 &792682958
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -542,7 +542,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1967658829}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.39, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 744372842}

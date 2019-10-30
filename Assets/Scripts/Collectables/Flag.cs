@@ -9,51 +9,33 @@ using UnityEngine;
 
 namespace Collectables
 {
-    [AddComponentMenu("Collectables/Flag")]
-    public class Flag : MonoBehaviour
+    public enum FlagState
+    {
+        AtBase,
+        Dropped,
+        Carried
+    }
+
+    public class Flag : ScriptableObject
     {
         #region Properties and Fields
 
         public string team = "";
-
-        private Vector3 initialPosition;
-
-        #endregion
-
-        #region Unity Methods
-
-        private void Start()
-        {
-            initialPosition = transform.localPosition;
-        }
+        
+        private FlagState flagState = FlagState.AtBase;
 
         #endregion
 
-        #region Flag State Methods
+        #region Flag Functions
 
         public void Reset()
         {
-            transform.localPosition = initialPosition;
+            flagState = FlagState.AtBase;
         }
 
-        #endregion
-
-        #region Collision Callbacks
-
-        void OnTriggerEnter(Collider other)
+        public void GetCarried()
         {
-            Player player = other.GetComponent<Player>();
-            if (player != null)
-            {
-                if (player.team == team)
-                {
-                    Reset();
-                }
-                else
-                {
-                    Destroy(gameObject);
-                }
-            }
+            flagState = FlagState.Carried;
         }
 
         #endregion

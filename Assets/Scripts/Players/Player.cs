@@ -1,5 +1,4 @@
-﻿using Collectables;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,13 +7,12 @@ using UnityEngine;
 
 namespace Players
 {
-    [AddComponentMenu("Players/Player")]
-    public class Player : MonoBehaviour
+    public class Player : ScriptableObject
     {
         #region Properties and Fields
 
         public string team = "";
-
+        
         #endregion
     }
 }
