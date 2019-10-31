@@ -28,10 +28,13 @@ namespace Input
 
         #region Unity Methods
 
-        void Update()
+        private void Start()
         {
             Cursor.lockState = CursorLockMode.Locked;
+        }
 
+        void Update()
+        {
             float horizontalMovement = UnityEngine.Input.GetAxis(HORIZONTAL_AXIS) * Time.deltaTime * speed;
             float verticalMovement = UnityEngine.Input.GetAxis(VERTICAL_AXIS) * Time.deltaTime * speed;
 
@@ -42,7 +45,7 @@ namespace Input
 
             if (axes == RotationAxes.MouseY && verticalMovement != 0)
             {
-                transform.localRotation *= Quaternion.AngleAxis(verticalMovement, -Vector3.right);
+                transform.localRotation *= Quaternion.AngleAxis(-verticalMovement, Vector3.right);
             }
         }
 

@@ -23,6 +23,7 @@ namespace Collectables
         public string team = "";
         
         private FlagState flagState = FlagState.AtBase;
+        public FlagState FlagState { get { return flagState; } }
 
         #endregion
 

@@ -12,25 +12,36 @@ namespace Players
     public class PlayerController : MonoBehaviour
     {
         #region Properties and Fields
+        
+        public bool IsCarryingFlag { get { return flag != null; } }
 
         public Player player;
 
-        private GameObject flag;
+        private FlagController flag;
 
         #endregion
 
         #region Flag Functions
 
-        public void PickupFlag(GameObject gameObject)
+        public void PickupFlag(FlagController flagController)
         {
-            flag = gameObject;
+            flag = flagController;
 
-            gameObject.transform.SetParent(transform);
-            gameObject.transform.localPosition = Vector3.zero;
+            flagController.gameObject.transform.SetParent(transform);
+            flagController.gameObject.transform.localPosition = Vector3.zero;
         }
 
         public void DropFlag()
         {
+            flag.gameObject.transform.SetParent(null);
+            flag = null;
+        }
+
+        public void ScoreFlag()
+        {
+            // Deparent before resetting position
+            flag.gameObject.transform.SetParent(null);
+            flag.Reset();
             flag = null;
         }
 

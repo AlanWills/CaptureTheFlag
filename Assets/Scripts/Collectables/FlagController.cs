@@ -39,7 +39,7 @@ namespace Collectables
 
         public void GetCarried(PlayerController playerController)
         {
-            playerController.PickupFlag(gameObject);
+            playerController.PickupFlag(this);
             flag.GetCarried();
         }
 
@@ -50,16 +50,25 @@ namespace Collectables
         void OnTriggerEnter(Collider other)
         {
             PlayerController playerController = other.GetComponent<PlayerController>();
-            if (playerController != null)
+            if (playerController == null)
             {
-                if (playerController.player.team == flag.team)
+                return;
+            }
+
+            if (playerController.player.team == flag.team)
+            {
+                if (flag.FlagState == FlagState.Dropped)
                 {
                     Reset();
                 }
-                else
+                else if (flag.FlagState == FlagState.AtBase && playerController.IsCarryingFlag)
                 {
-                    GetCarried(playerController);
+                    playerController.ScoreFlag();
                 }
+            }
+            else
+            {
+                GetCarried(playerController);
             }
         }
 
