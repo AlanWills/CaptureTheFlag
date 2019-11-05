@@ -13,7 +13,7 @@ namespace Weapons
         #region Properties and Fields
 
         public Transform gunEnd;
-        public GameObject bullet;
+        public Weapon weapon;
 
         #endregion
 
@@ -23,10 +23,11 @@ namespace Weapons
         {
             if (UnityEngine.Input.GetKeyDown(KeyCode.Space))
             {
-                GameObject bulletInstance = Instantiate(bullet);
+                GameObject bulletInstance = Instantiate(weapon.bullet.bulletPrefab);
                 bulletInstance.transform.localPosition = gunEnd.position;
                 bulletInstance.transform.localRotation = gunEnd.rotation;
-                bulletInstance.GetComponent<Rigidbody>().velocity = gunEnd.forward;
+                bulletInstance.GetComponent<Rigidbody>().velocity = gunEnd.forward * weapon.bullet.speed;
+                bulletInstance.GetComponent<BulletController>().Activate(weapon.bullet);
             }
         }
 

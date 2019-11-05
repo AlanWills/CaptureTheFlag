@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using Weapons;
 
 namespace Players
 {
@@ -18,6 +19,30 @@ namespace Players
         public Player player;
 
         private FlagController flag;
+        private float currentHealth;
+
+        #endregion
+
+        #region Unity Methods
+
+        void Start()
+        {
+            currentHealth = player.health;
+        }
+
+        #endregion
+
+        #region Health Functions
+
+        public void Damage(float damage)
+        {
+            currentHealth -= damage;
+
+            if (currentHealth <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
 
         #endregion
 
@@ -43,6 +68,23 @@ namespace Players
             flag.gameObject.transform.SetParent(null);
             flag.Reset();
             flag = null;
+        }
+
+        #endregion
+
+        #region Collision Callbacks
+
+        void OnTriggerEnter(Collider other)
+        {
+            BulletController bulletController = other.GetComponent<BulletController>();
+            if (bulletController == null)
+            {
+                return;
+            }
+
+            // Damage
+            Damage(bulletController.BulletDamage);
+            Destroy(other.gameObject);
         }
 
         #endregion

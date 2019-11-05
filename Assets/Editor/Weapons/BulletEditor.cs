@@ -4,17 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEditor;
+using Weapons;
 
-namespace Collectables
+namespace Assets.Editor.Weapons
 {
-    public class FlagEditor : Editor
+    class BulletEditor
     {
         #region Create Menu Item
 
-        [MenuItem("Assets/Create/Flag")]
+        [MenuItem("Assets/Create/Bullet")]
         public static void CreateAsset()
         {
-            ScriptableObjectUtility.CreateAsset<Flag>();
+            ScriptableObjectUtility.CreateAsset<Bullet>();
         }
 
         #endregion

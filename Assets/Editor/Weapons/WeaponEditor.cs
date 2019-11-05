@@ -5,16 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEditor;
 
-namespace Collectables
+namespace Weapons
 {
-    public class FlagEditor : Editor
+    public class WeaponEditor : Editor
     {
         #region Create Menu Item
 
-        [MenuItem("Assets/Create/Flag")]
+        [MenuItem("Assets/Create/Weapon")]
         public static void CreateAsset()
         {
-            ScriptableObjectUtility.CreateAsset<Flag>();
+            ScriptableObjectUtility.CreateAsset<Weapon>();
         }
 
         #endregion

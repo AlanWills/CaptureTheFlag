@@ -5,15 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Players
+namespace Weapons
 {
-    public class Player : ScriptableObject
+    public class Bullet : ScriptableObject
     {
         #region Properties and Fields
 
-        public string team = "";
-        public float health = 100;
-        
+        public GameObject bulletPrefab;
+        public float speed = 1;
+        public float lifeTime = 2;
+        public float damage = 1;
+
         #endregion
     }
 }
